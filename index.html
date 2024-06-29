@@ -11,16 +11,13 @@
 
             if (userAgent.includes('Android')) {
                 platform = 'Android';
-                // Redirect link for Android. Add Play Store link below
                 window.location.href = 'https://play.google.com/store/apps/details?id=com.example.yourapp';
             } else if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
                 platform = 'iOS';
-                // Redirect link for iOS. Add App Store link below
-                window.location.href = 'https://apps.apple.com/us/app/yourapp/id1234567890';
+                window.location.href = 'https://www.facebook.com';
             } else {
                 platform = 'Other';
-                // Redirect link for other platforms if needed
-                // window.location.href = 'https://www.yoursite.com';
+                window.location.href = 'https://www.google.com';
             }
 
             console.log("Detected platform: " + platform);
