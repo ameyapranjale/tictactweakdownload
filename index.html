@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect based on User Agent</title>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var platform = '';
+
+            if (userAgent.includes('Android')) {
+                platform = 'Android';
+                // Redirect link for Android. Add Play Store link below
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.example.yourapp';
+            } else if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
+                platform = 'iOS';
+                // Redirect link for iOS. Add App Store link below
+                window.location.href = 'https://apps.apple.com/us/app/yourapp/id1234567890';
+            } else {
+                platform = 'Other';
+                // Redirect link for other platforms if needed
+                // window.location.href = 'https://www.yoursite.com';
+            }
+
+            console.log("Detected platform: " + platform);
+        });
+    </script>
+</head>
+<body>
+    <h1>Detecting your platform...</h1>
+</body>
+</html>
