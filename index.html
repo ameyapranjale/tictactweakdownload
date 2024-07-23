@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AR Invite</title>
+    <title>Interactive AR Invite</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://rawcdn.githack.com/AR-js-org/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
 </head>
@@ -9,32 +9,35 @@
     <a-scene embedded arjs>
         <!-- Define a marker using the "hiro" pattern -->
         <a-marker preset="hiro">
-            <!-- Add a readable text entity -->
-            <a-text id="inviteText" value="" position="0 0.5 0" rotation="-90 0 0" color="red" width="4"></a-text>
+            <!-- Add a text entity to display messages -->
+            <a-text id="inviteText" value="Choose an option:" position="0 1 0" rotation="-90 0 0" color="red" width="4"></a-text>
+
+            <!-- Add clickable option entities -->
+            <a-box id="option1" position="-1 0.5 0" rotation="-90 0 0" color="blue" width="0.5" height="0.5" depth="0.5"></a-box>
+            <a-text value="Option 1" position="-1 0.5 0.3" rotation="-90 0 0" color="white" width="2"></a-text>
+
+            <a-box id="option2" position="1 0.5 0" rotation="-90 0 0" color="green" width="0.5" height="0.5" depth="0.5"></a-box>
+            <a-text value="Option 2" position="1 0.5 0.3" rotation="-90 0 0" color="white" width="2"></a-text>
         </a-marker>
+
         <!-- Add a camera to the scene -->
         <a-entity camera></a-entity>
     </a-scene>
-    
+
     <script>
-        // JavaScript to animate typing effect
+        // JavaScript to handle interactions
         document.addEventListener('DOMContentLoaded', () => {
             const textEntity = document.getElementById('inviteText');
-            const message = "You're Invited!";
-            const typingSpeed = 150; // Time in milliseconds between each character
+            const option1 = document.getElementById('option1');
+            const option2 = document.getElementById('option2');
 
-            let index = 0;
+            option1.addEventListener('click', () => {
+                textEntity.setAttribute('value', "You chose Option 1!");
+            });
 
-            function typeWriter() {
-                if (index < message.length) {
-                    textEntity.setAttribute('value', message.substring(0, index + 1));
-                    index++;
-                    setTimeout(typeWriter, typingSpeed);
-                }
-            }
-
-            // Start typing effect after a short delay to ensure AR.js is ready
-            setTimeout(typeWriter, 1000);
+            option2.addEventListener('click', () => {
+                textEntity.setAttribute('value', "You chose Option 2!");
+            });
         });
     </script>
 </body>
