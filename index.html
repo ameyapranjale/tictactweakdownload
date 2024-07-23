@@ -1,30 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to download</title>
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            var platform = '';
-
-            if (userAgent.includes('Android')) {
-                platform = 'Android';
-                window.location.href = 'https://play.google.com/store/apps/details?id=com.ameyapranjale.tictactweak';
-            } else if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
-                platform = 'iOS';
-                window.location.href = 'https://apps.apple.com/in/app/tic-tac-tweak/id6504701660';
-            } else {
-                platform = 'Other';
-                window.location.href = 'https://ameyapranjale.github.io/tictactweakdownload/NoAutoRedirect';
-            }
-
-            console.log("Detected platform: " + platform);
-        });
-    </script>
+    <title>AR Invite</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script>
 </head>
-<body>
-    <h4>Detecting your platform...</h4>
+<body style='margin: 0; overflow: hidden;'>
+    <a-scene embedded arjs>
+        <a-marker preset="kanji">
+            <a-entity text="value: You're Invited!; color: red;" position="0 0.5 0"></a-entity>
+            <a-entity gltf-model="url(/path/to/your/invite-model.gltf)" scale="0.5 0.5 0.5" position="0 0 -1"></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
 </body>
 </html>
