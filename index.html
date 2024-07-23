@@ -3,14 +3,17 @@
 <head>
     <title>AR Invite</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script>
+    <script src="https://rawcdn.githack.com/AR-js-org/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
 </head>
-<body style='margin: 0; overflow: hidden;'>
+<body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs>
-        <a-marker preset="kanji">
-            <a-entity text="value: You're Invited!; color: red;" position="0 0.5 0"></a-entity>
-            <a-entity gltf-model="url(/path/to/your/invite-model.gltf)" scale="0.5 0.5 0.5" position="0 0 -1"></a-entity>
+        <!-- Define a marker using the "hiro" pattern -->
+        <a-marker preset="hiro">
+            <!-- Add a 3D object, text, or any A-Frame entity to be displayed on the marker -->
+            <a-box position="0 0.5 0" material="color: blue;"></a-box>
+            <a-text value="You're Invited!" position="-0.5 1 0" color="red"></a-text>
         </a-marker>
+        <!-- Add a camera to the scene -->
         <a-entity camera></a-entity>
     </a-scene>
 </body>
