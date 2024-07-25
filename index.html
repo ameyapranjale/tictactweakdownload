@@ -1,83 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AR Invite with Device Orientation</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://rawcdn.githack.com/AR-js-org/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Text on Wall Angle</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+    </style>
 </head>
-<body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs='sourceType: webcam;'>
-        <!-- Add a camera to the scene -->
-        <a-entity camera position="0 1.6 0"></a-entity>
-
-        <!-- Add lighting to the scene -->
-        <a-light type="ambient" color="#FFFFFF"></a-light>
-        <a-light type="directional" color="#FFFFFF" position="2 4 3"></a-light>
-
-        <!-- Define a wall surface -->
-        <a-plane id="wall" position="0 1 -2" rotation="0 0 0" width="4" height="3" color="#CCC"></a-plane>
-
-        <!-- Add interactive text entities to the wall -->
-        <a-text id="text1" value="Option 1" position="-1 1.5 -1.5" rotation="0 0 0" color="black" width="2" visible="false"></a-text>
-        <a-text id="text2" value="Option 2" position="1 1.5 -1.5" rotation="0 0 0" color="black" width="2" visible="false"></a-text>
-        <a-text id="text3" value="Option 3" position="-1 0.5 -1.5" rotation="0 0 0" color="black" width="2" visible="false"></a-text>
-        <a-text id="text4" value="Option 4" position="1 0.5 -1.5" rotation="0 0 0" color="black" width="2" visible="false"></a-text>
-
-        <!-- Add interactive buttons to show text -->
-        <a-box id="button1" position="-2 1 0" rotation="0 0 0" color="blue" width="0.5" height="0.5" depth="0.5"></a-box>
-        <a-text value="Show Option 1" position="-2 1 0.5" rotation="0 0 0" color="white" width="2"></a-text>
-
-        <a-box id="button2" position="-2 0.5 0" rotation="0 0 0" color="green" width="0.5" height="0.5" depth="0.5"></a-box>
-        <a-text value="Show Option 2" position="-2 0.5 0.5" rotation="0 0 0" color="white" width="2"></a-text>
-
-        <a-box id="button3" position="-2 -0.5 0" rotation="0 0 0" color="yellow" width="0.5" height="0.5" depth="0.5"></a-box>
-        <a-text value="Show Option 3" position="-2 -0.5 0.5" rotation="0 0 0" color="white" width="2"></a-text>
-
-        <a-box id="button4" position="-2 -1 0" rotation="0 0 0" color="purple" width="0.5" height="0.5" depth="0.5"></a-box>
-        <a-text value="Show Option 4" position="-2 -1 0.5" rotation="0 0 0" color="white" width="2"></a-text>
-    </a-scene>
-
-    <script>
-        // JavaScript to handle button interactions
-        document.addEventListener('DOMContentLoaded', () => {
-            const text1 = document.getElementById('text1');
-            const text2 = document.getElementById('text2');
-            const text3 = document.getElementById('text3');
-            const text4 = document.getElementById('text4');
-            
-            const button1 = document.getElementById('button1');
-            const button2 = document.getElementById('button2');
-            const button3 = document.getElementById('button3');
-            const button4 = document.getElementById('button4');
-            
-            button1.addEventListener('click', () => {
-                text1.setAttribute('visible', 'true');
-                text2.setAttribute('visible', 'false');
-                text3.setAttribute('visible', 'false');
-                text4.setAttribute('visible', 'false');
-            });
-            
-            button2.addEventListener('click', () => {
-                text1.setAttribute('visible', 'false');
-                text2.setAttribute('visible', 'true');
-                text3.setAttribute('visible', 'false');
-                text4.setAttribute('visible', 'false');
-            });
-            
-            button3.addEventListener('click', () => {
-                text1.setAttribute('visible', 'false');
-                text2.setAttribute('visible', 'false');
-                text3.setAttribute('visible', 'true');
-                text4.setAttribute('visible', 'false');
-            });
-            
-            button4.addEventListener('click', () => {
-                text1.setAttribute('visible', 'false');
-                text2.setAttribute('visible', 'false');
-                text3.setAttribute('visible', 'false');
-                text4.setAttribute('visible', 'true');
-            });
-        });
-    </script>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.139.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.139.2/examples/js/controls/DeviceOrientationControls.js"></script>
 </body>
 </html>
